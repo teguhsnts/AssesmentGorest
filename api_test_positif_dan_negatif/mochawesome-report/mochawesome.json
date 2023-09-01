@@ -1,0 +1,235 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 8,
+    "passes": 8,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-08-31T21:37:53.105Z",
+    "end": "2023-08-31T21:37:55.338Z",
+    "duration": 2233,
+    "testsRegistered": 8,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "4b40208e-f553-4438-9b71-e4a2098fc89b",
+      "title": "",
+      "fullFile": "C:\\Users\\user\\Documents\\Tes Assesment BNI\\api_test_positif_dan_negatif\\api_test.js",
+      "file": "\\api_test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [
+        {
+          "title": "should not delete a user with non-existent ID - Negative Test",
+          "fullTitle": "should not delete a user with non-existent ID - Negative Test",
+          "timedOut": false,
+          "duration": 224,
+          "state": "passed",
+          "speed": "slow",
+          "pass": true,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "try {\n  await axios.delete(`${baseUrl}/public/v2/users/non_existent_id`, {\n    headers: {\n      Authorization: `Bearer ${ACCESS_TOKEN}`,\n    },\n  });\n} catch (error) {\n  expect(error.response.status).to.equal(404);\n}",
+          "err": {},
+          "uuid": "8e89e4e3-e6bc-4edc-a841-5afaa2a55dc0",
+          "parentUUID": "4b40208e-f553-4438-9b71-e4a2098fc89b",
+          "isHook": false,
+          "skipped": false
+        }
+      ],
+      "suites": [
+        {
+          "uuid": "d821139d-d298-4098-8531-9865a733e930",
+          "title": "Automation API Testing",
+          "fullFile": "C:\\Users\\user\\Documents\\Tes Assesment BNI\\api_test_positif_dan_negatif\\api_test.js",
+          "file": "\\api_test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create a new user",
+              "fullTitle": "Automation API Testing Create a new user",
+              "timedOut": false,
+              "duration": 275,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const createUser = {\n    name: 'Teguh Santoso',\n    email: 'teguhsnts@gmail.com',\n    gender: 'male',\n    status: 'active'\n};\n    \nconst response = await axios.post(`${baseUrl}/public/v2/users`, createUser, {\n    headers: {\n        Authorization: `Bearer ${ACCESS_TOKEN}`\n    }\n});\n    \nexpect(response.status).to.equal(201);\nuserId = response.data.id;\nconsole.log(response.data);",
+              "err": {},
+              "uuid": "70206e87-e574-4186-b766-45e48f46cfdc",
+              "parentUUID": "d821139d-d298-4098-8531-9865a733e930",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should handle invalid user data - Negative Test",
+              "fullTitle": "Automation API Testing should handle invalid user data - Negative Test",
+              "timedOut": false,
+              "duration": 314,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const invalidUser = {\n  name: '',\n  email: 'invalid_email',\n  gender: 'invalid_gender',\n  status: 'invalid_status'\n};\n    \ntry {\n  await axios.post(`${baseUrl}/public/v2/users`, invalidUser, {\n    headers: { Authorization: `Bearer ${ACCESS_TOKEN}` }\n  });\n} catch (error) {\n  expect(error.response.status).to.equal(422);\n}",
+              "err": {},
+              "uuid": "a07642ba-4c48-461f-9c17-905f12d581d0",
+              "parentUUID": "d821139d-d298-4098-8531-9865a733e930",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get user details",
+              "fullTitle": "Automation API Testing Get user details",
+              "timedOut": false,
+              "duration": 182,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await axios.get(`${baseUrl}/public/v2/users/${userId}`, {\n            headers: {\n                Authorization: `Bearer ${ACCESS_TOKEN}`\n            }\n        });\n    \n        console.log(response.data);\n        expect(response.status).to.equal(200);\n        expect(response.data.id).to.equal(userId);\n        expect(response.data.name).to.equal('Teguh Santoso');\n        expect(response.data.email).to.equal('teguhsnts@gmail.com');\n        expect(response.data.gender).to.equal('male');\n        expect(response.data.status).to.equal('active');",
+              "err": {},
+              "uuid": "090d094b-a292-4a55-8aae-abc33073a3bd",
+              "parentUUID": "d821139d-d298-4098-8531-9865a733e930",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should handle invalid token - Negative Test",
+              "fullTitle": "Automation API Testing should handle invalid token - Negative Test",
+              "timedOut": false,
+              "duration": 351,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const invalidToken = 'invalid_token_here';\n    \ntry {\n  await axios.get(baseUrl, {\n    headers: { Authorization: `Bearer ${invalidToken}` }\n  });\n} catch (error) {\n  expect(error.response.status).to.equal(401);\n//   console.log(error.response.data)\n}",
+              "err": {},
+              "uuid": "eafceb14-f94b-4325-8b2a-507632cea29f",
+              "parentUUID": "d821139d-d298-4098-8531-9865a733e930",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Update user",
+              "fullTitle": "Automation API Testing Update user",
+              "timedOut": false,
+              "duration": 297,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const UpdateUser = {\n    name: 'teguhsnts',\n    email: 'teguhs@gmail.com',\n    gender: 'male',\n    status: 'active'  \n};\n    \nconst response = await axios.put(`${baseUrl}/public/v2/users/${userId}`, UpdateUser, {\n    headers: {\n        Authorization: `Bearer ${ACCESS_TOKEN}`\n    }\n});\n    \nconsole.log(response.data);\nexpect(response.status).to.equal(200);\nexpect(response.data.id).to.equal(userId);\nexpect(response.data.name).to.equal('teguhsnts');\nexpect(response.data.email).to.equal('teguhs@gmail.com');\nexpect(response.data.gender).to.equal('male');\nexpect(response.data.status).to.equal('active');",
+              "err": {},
+              "uuid": "bd93fe79-f487-4a25-b5cb-3ff522eb00d8",
+              "parentUUID": "d821139d-d298-4098-8531-9865a733e930",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should not update a user with invalid token - Negative Test",
+              "fullTitle": "Automation API Testing should not update a user with invalid token - Negative Test",
+              "timedOut": false,
+              "duration": 278,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const updatedName = 'Updated Name';\n    \ntry {\n  await axios.put(`${baseUrl}/public/v2/users/${userId}`, { name: updatedName }, {\n    headers: {\n      Authorization: `Bearer invalid_token`,\n    },\n  });\n} catch (error) {\n  expect(error.response.status).to.equal(401);\n}",
+              "err": {},
+              "uuid": "7c0b21d8-63a4-4c8a-a892-56b1218859ba",
+              "parentUUID": "d821139d-d298-4098-8531-9865a733e930",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Delete user",
+              "fullTitle": "Automation API Testing Delete user",
+              "timedOut": false,
+              "duration": 290,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await axios.delete(`${baseUrl}/public/v2/users/${userId}`, {\n            headers: {\n                Authorization: `Bearer ${ACCESS_TOKEN}`\n            }\n        });\n    \n        expect(response.status).to.equal(204);",
+              "err": {},
+              "uuid": "70387791-b014-4544-a4a4-ab35e9f94390",
+              "parentUUID": "d821139d-d298-4098-8531-9865a733e930",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "70206e87-e574-4186-b766-45e48f46cfdc",
+            "a07642ba-4c48-461f-9c17-905f12d581d0",
+            "090d094b-a292-4a55-8aae-abc33073a3bd",
+            "eafceb14-f94b-4325-8b2a-507632cea29f",
+            "bd93fe79-f487-4a25-b5cb-3ff522eb00d8",
+            "7c0b21d8-63a4-4c8a-a892-56b1218859ba",
+            "70387791-b014-4544-a4a4-ab35e9f94390"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1987,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [
+        "8e89e4e3-e6bc-4edc-a841-5afaa2a55dc0"
+      ],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 224,
+      "root": true,
+      "rootEmpty": false,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}

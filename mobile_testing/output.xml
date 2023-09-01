@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.10.7 on win32)" generated="20230901 02:17:53.007" rpa="false" schemaversion="4">
+<suite id="s1" name="Appium Test" source="C:\Users\user\Documents\Tes Assesment BNI\mobile_testing\appium_test.robot">
+<test id="s1-t1" name="Login Positif" line="12">
+<kw name="Open Browser">
+<arg>${DEMO_URL}</arg>
+<arg>appium=${DESIRED_CAPABILITIES}</arg>
+<msg timestamp="20230901 02:17:53.415" level="FAIL">No keyword with name 'Open Browser' found.</msg>
+<status status="FAIL" starttime="20230901 02:17:53.415" endtime="20230901 02:17:53.415"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>id=username</arg>
+<arg>tomsmith</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<status status="NOT RUN" starttime="20230901 02:17:53.415" endtime="20230901 02:17:53.415"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>id=password</arg>
+<arg>SuperSecretPassword!</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<status status="NOT RUN" starttime="20230901 02:17:53.415" endtime="20230901 02:17:53.415"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>css=[type='submit']</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="NOT RUN" starttime="20230901 02:17:53.421" endtime="20230901 02:17:53.421"/>
+</kw>
+<kw name="Sleep">
+<arg>5s</arg>
+<status status="NOT RUN" starttime="20230901 02:17:53.421" endtime="20230901 02:17:53.421"/>
+</kw>
+<kw name="Close Browser">
+<status status="NOT RUN" starttime="20230901 02:17:53.425" endtime="20230901 02:17:53.425"/>
+</kw>
+<status status="FAIL" starttime="20230901 02:17:53.408" endtime="20230901 02:17:53.426">No keyword with name 'Open Browser' found.</status>
+</test>
+<test id="s1-t2" name="Login Negatif" line="20">
+<kw name="Open Browser">
+<arg>${DEMO_URL}</arg>
+<arg>appium=${DESIRED_CAPABILITIES}</arg>
+<msg timestamp="20230901 02:17:53.433" level="FAIL">No keyword with name 'Open Browser' found.</msg>
+<status status="FAIL" starttime="20230901 02:17:53.433" endtime="20230901 02:17:53.433"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>id=username</arg>
+<arg>tomsmith</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<status status="NOT RUN" starttime="20230901 02:17:53.434" endtime="20230901 02:17:53.434"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>id=password</arg>
+<arg>wrong_password</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<status status="NOT RUN" starttime="20230901 02:17:53.434" endtime="20230901 02:17:53.434"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>css=[type='submit']</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="NOT RUN" starttime="20230901 02:17:53.435" endtime="20230901 02:17:53.435"/>
+</kw>
+<kw name="Sleep">
+<arg>5s</arg>
+<status status="NOT RUN" starttime="20230901 02:17:53.435" endtime="20230901 02:17:53.435"/>
+</kw>
+<kw name="Close Browser">
+<status status="NOT RUN" starttime="20230901 02:17:53.438" endtime="20230901 02:17:53.438"/>
+</kw>
+<status status="FAIL" starttime="20230901 02:17:53.427" endtime="20230901 02:17:53.439">No keyword with name 'Open Browser' found.</status>
+</test>
+<status status="FAIL" starttime="20230901 02:17:53.007" endtime="20230901 02:17:53.441"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="2" skip="0" id="s1" name="Appium Test">Appium Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
